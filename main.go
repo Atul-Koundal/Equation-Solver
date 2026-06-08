@@ -1,20 +1,29 @@
 package main
 
 
-//So the main logic is i will tokenise the equation
 
-type TokenType int
+//So the main logic is i will tokenise the equation then i will build the ast from this to 
+//deal with the predence and all ...
+//Basically the replication on how interpreter and compilers work on these equations
+
+type TokenType string
 
 const (
-	TokenType_Unknown TokenType = iota
-	TokenType_Number
-	TokenType_Operator
-	TokenType_OpenBracket
-	TokenType_CloseBracket
+	NUMBER TokenType = "NUMBER"
+
+	PLUS  TokenType = "+"
+	MINUS TokenType = "-"
+	MUL   TokenType = "*"
+	DIV   TokenType = "/"
+
+	LPAREN TokenType = "("
+	RPAREN TokenType = ")"
+
+	EOF TokenType = "EOF"
 )
 
+//This Literal just meant what is the value of the particular token
 type Token struct {
-	Val  string
-	Type TokenType
+	Type    TokenType
+	Literal string
 }
-
